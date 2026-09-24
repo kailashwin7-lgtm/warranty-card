@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Warranty Registration</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f1f3f6;
+  color:#222;
+}
+
+.header{
+  background:#2874f0;
+  color:white;
+  padding:18px;
+  text-align:center;
+  font-size:23px;
+  font-weight:bold;
+}
+
+.container{
+  max-width:600px;
+  margin:20px auto;
+  padding:0 15px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+h2{
+  margin-top:0;
+  font-size:20px;
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+input, select, textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+input[type="file"]{
+  padding:10px;
+  background:#fafafa;
+}
+
+.product-options{
+  display:grid;
+  gap:10px;
+}
+
+.product-option{
+  border:1px solid #ddd;
+  padding:13px;
+  border-radius:7px;
+}
+
+.product-option input{
+  width:auto;
+  margin-right:8px;
+}
+
+.payment-box{
+  background:#f7f7f7;
+  padding:15px;
+  border-radius:7px;
+  margin-top:15px;
+}
+
+.amount{
+  font-size:22px;
+  font-weight:bold;
+  color:#2874f0;
+}
+
+button{
+  width:100%;
+  border:0;
+  padding:15px;
+  background:#fb641b;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+button:hover{
+  background:#e85a15;
+}
+
+.success{
+  display:none;
+  text-align:center;
+}
+
+.success-icon{
+  font-size:60px;
+}
+
+.small{
+  color:#777;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.hidden{
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  🛡️ Warranty Registration
+</div>
+
+<div class="container">
+
+<form id="warrantyForm">
+
+<!-- PRODUCT -->
+<div class="card">
+
+<h2>1. Product Details</h2>
+
+<label>Product की Photo Upload करें</label>
+<input type="file" accept="image/*" required>
+
+<label>किस Product में समस्या है?</label>
+
+<div class="product-options">
+
+  <div class="product-option">
+    <label>
+      <input type="checkbox" name="product" value="Bluetooth Earbuds">
+      🎧 Bluetooth Earbuds
+    </label>
+  </div>
+
+  <div class="product-option">
+    <label>
+      <input type="checkbox" name="product" value="Smart Watch">
+      ⌚ Smart Watch
+    </label>
+  </div>
+
+  <div class="product-option">
+    <label>
+      <input type="checkbox" name="product" value="OnePlus Neckband">
+      🎵 OnePlus Neckband
+    </label>
+  </div>
+
+</div>
+
+<label>Warranty Problem</label>
+
+<select id="problem" required>
+  <option value="">-- समस्या चुनें --</option>
+  <option>🔇 आवाज नहीं आ रही</option>
+  <option>🔊 आवाज खराब / कम आ रही है</option>
+  <option>🎧 एक Earbud काम नहीं कर रहा</option>
+  <option>🔋 Battery / Charging समस्या</option>
+  <option>📱 Bluetooth Connect नहीं हो रहा</option>
+  <option>⌚ Display / Touch काम नहीं कर रहा</option>
+  <option>❌ Product चालू नहीं हो रहा</option>
+  <option value="other">📝 Other Problem</option>
+</select>
+
+<div id="otherBox" class="hidden">
+
+<label>अपनी समस्या लिखें</label>
+
+<textarea
+  placeholder="अपनी समस्या यहां विस्तार से लिखें..."
+></textarea>
+
+</div>
+
+<label>Problem की Photo / Video (Optional)</label>
+<input type="file" accept="image/*,video/*">
+
+</div>
+
+
+<!-- CUSTOMER -->
+<div class="card">
+
+<h2>2. Customer Details</h2>
+
+<label>Full Name</label>
+<input
+  type="text"
+  placeholder="अपना नाम लिखें"
+  required
+>
+
+<label>Mobile Number</label>
+<input
+  type="tel"
+  placeholder="10 digit mobile number"
+  maxlength="10"
+  required
+>
+
+</div>
+
+
+<!-- ADDRESS -->
+<div class="card">
+
+<h2>3. Delivery / Contact Address</h2>
+
+<label>House / Flat No.</label>
+<input
+  type="text"
+  placeholder="House / Flat No."
+  required
+>
+
+<label>Full Address</label>
+<textarea
+  placeholder="अपना पूरा पता लिखें"
+  required
+></textarea>
+
+<label>City</label>
+<input
+  type="text"
+  placeholder="City"
+  required
+>
+
+<label>State</label>
+<input
+  type="text"
+  placeholder="State"
+  required
+>
+
+<label>PIN Code</label>
+<input
+  type="text"
+  placeholder="6 digit PIN Code"
+  maxlength="6"
+  required
+>
+
+</div>
+
+
+<!-- PAYMENT -->
+<div class="card">
+
+<h2>4. Warranty Service Payment</h2>
+
+<div class="payment-box">
+
+<p>Warranty Service Charge</p>
+
+<div class="amount">
+₹199
+</div>
+
+<p class="small">
+Payment करने के बाद आपका warranty request submit किया जाएगा।
+</p>
+
+</div>
+
+<button type="button" onclick="payNow()">
+💳 Pay Now
+</button>
+
+</div>
+
+</form>
+
+
+<!-- SUCCESS -->
+<div class="card success" id="successBox">
+
+<div class="success-icon">
+✅
+</div>
+
+<h2>Warranty Request Submitted</h2>
+
+<p>
+आपकी warranty request successfully submit हो गई है।
+</p>
+
+<p>
+हम आपके दिए गए mobile number पर contact करेंगे।
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+const problem = document.getElementById("problem");
+const otherBox = document.getElementById("otherBox");
+
+problem.addEventListener("change", function(){
+
+  if(this.value === "other"){
+    otherBox.classList.remove("hidden");
+  }else{
+    otherBox.classList.add("hidden");
+  }
+
+});
+
+
+function payNow(){
+
+  const form = document.getElementById("warrantyForm");
+
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+
+  // अभी Demo Payment
+  alert("Payment page यहां खुलेगा।");
+
+  // Demo के लिए Success दिखा रहे हैं
+  form.style.display = "none";
+
+  document.getElementById("successBox").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
