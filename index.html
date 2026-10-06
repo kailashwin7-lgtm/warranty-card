@@ -279,18 +279,22 @@ button:hover{
 </div>
 
 
-<!-- PAYMENT -->
 <div class="card">
+  <button type="submit">
+    Submit Warranty Request
+  </button>
+</div>
+
+</form>
+
+<div class="card hidden" id="paymentPage">
 
 <h2>4. Warranty Service Payment</h2>
 
 <div class="payment-box">
-
 <p>Warranty Service Charge</p>
 
-<div class="amount">
-₹199
-</div>
+<div class="amount">₹199</div>
 
 <p class="small">
 Payment करने के बाद आपका warranty request submit किया जाएगा।
@@ -303,10 +307,6 @@ Payment करने के बाद आपका warranty request submit क�
 </button>
 
 </div>
-
-</form>
-
-
 <!-- SUCCESS -->
 <div class="card success" id="successBox">
 
@@ -347,23 +347,30 @@ problem.addEventListener("change", function(){
 
 function payNow(){
 
-  const form = document.getElementById("warrantyForm");
-
-  if(!form.checkValidity()){
-    form.reportValidity();
-    return;
-  }
-
-  // अभी Demo Payment
   alert("Payment page यहां खुलेगा।");
 
-  // Demo के लिए Success दिखा रहे हैं
-  form.style.display = "none";
+  document.getElementById("paymentPage").style.display = "none";
 
   document.getElementById("successBox").style.display = "block";
 
 }
 
+document.getElementById("warrantyForm")
+.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  if(!this.checkValidity()){
+    this.reportValidity();
+    return;
+  }
+
+  this.style.display = "none";
+
+  document.getElementById("paymentPage")
+  .classList.remove("hidden");
+
+});
 </script>
 
 </body>
