@@ -303,7 +303,7 @@ Payment करने के बाद आपका warranty request submit क�
 </div>
 
 <button type="button" onclick="payNow()">
-💳 Pay Now
+💳 Pay Now ₹199
 </button>
 
 </div>
@@ -347,12 +347,17 @@ problem.addEventListener("change", function(){
 
 function payNow(){
 
-  alert("Payment page यहां खुलेगा।");
+  const upiID = "7568735899@ptaxis";
+  const amount = "199";
+  const name = "Warranty Service Charge";
 
-  document.getElementById("paymentPage").style.display = "none";
+  const upiURL =
+    "upi://pay?pa=" + encodeURIComponent(upiID) +
+    "&pn=" + encodeURIComponent(name) +
+    "&am=" + amount +
+    "&cu=INR";
 
-  document.getElementById("successBox").style.display = "block";
-
+  window.location.href = upiURL;
 }
 
 document.getElementById("warrantyForm")
