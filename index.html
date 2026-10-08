@@ -13,7 +13,7 @@
 
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
   background:#f1f3f6;
   color:#222;
 }
@@ -53,7 +53,7 @@ label{
   font-weight:bold;
 }
 
-input, select, textarea{
+input,select,textarea{
   width:100%;
   padding:13px;
   border:1px solid #ccc;
@@ -279,34 +279,40 @@ button:hover{
 </div>
 
 
-<div class="card">
-  <button type="submit">
-    Submit Warranty Request
-  </button>
-</div>
-
-</form>
-
+<!-- PAYMENT -->
 <div class="card hidden" id="paymentPage">
 
 <h2>4. Warranty Service Payment</h2>
 
 <div class="payment-box">
+
 <p>Warranty Service Charge</p>
 
-<div class="amount">₹199</div>
+<div class="amount">₹699</div>
 
 <p class="small">
-Payment करने के बाद आपका warranty request submit किया जाएगा।
+Payment करने के लिए नीचे Pay Now पर क्लिक करें।
 </p>
 
 </div>
 
 <button type="button" onclick="payNow()">
-💳 Pay Now ₹199
+💳 Pay Now ₹699
 </button>
 
 </div>
+
+
+<!-- SUBMIT -->
+<div class="card" id="submitCard">
+
+<button type="submit">
+Submit Warranty Request
+</button>
+
+</div>
+
+
 <!-- SUCCESS -->
 <div class="card success" id="successBox">
 
@@ -345,20 +351,17 @@ problem.addEventListener("change", function(){
 });
 
 
+/* PAYTM PAYMENT */
+
 function payNow(){
 
- const upiID = "75687358@ybl";
-  const amount = "10";
-  const name = "Warranty Service Charge";
+  window.location.href =
+    "https://p.ppsl.io/PYTMPS/vMxejk";
 
-  const upiURL =
-    "upi://pay?pa=" + encodeURIComponent(upiID) +
-    "&pn=" + encodeURIComponent(name) +
-    "&am=" + amount +
-    "&cu=INR";
-
-  window.location.href = upiURL;
 }
+
+
+/* WARRANTY FORM */
 
 document.getElementById("warrantyForm")
 .addEventListener("submit", function(e){
@@ -376,6 +379,7 @@ document.getElementById("warrantyForm")
   .classList.remove("hidden");
 
 });
+
 </script>
 
 </body>
