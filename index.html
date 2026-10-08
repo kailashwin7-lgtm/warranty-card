@@ -87,19 +87,6 @@ input[type="file"]{
   margin-right:8px;
 }
 
-.payment-box{
-  background:#f7f7f7;
-  padding:15px;
-  border-radius:7px;
-  margin-top:15px;
-}
-
-.amount{
-  font-size:22px;
-  font-weight:bold;
-  color:#2874f0;
-}
-
 button{
   width:100%;
   border:0;
@@ -126,10 +113,13 @@ button:hover{
   font-size:60px;
 }
 
-.small{
-  color:#777;
-  font-size:13px;
-  margin-top:5px;
+.success h2{
+  color:#2874f0;
+  margin-bottom:10px;
+}
+
+.success p{
+  line-height:1.6;
 }
 
 .hidden{
@@ -279,50 +269,40 @@ button:hover{
 </div>
 
 
+<!-- SUBMIT -->
 <div class="card">
+
   <button type="submit">
     Submit Warranty Request
   </button>
+
 </div>
 
 </form>
 
-<div class="card hidden" id="paymentPage">
 
-<h2>4. Warranty Service Payment</h2>
-
-<div class="payment-box">
-<p>Warranty Service Charge</p>
-
-<div class="amount">₹199</div>
-
-<p class="small">
-Payment करने के बाद आपका warranty request submit किया जाएगा।
-</p>
-
-</div>
-
-<button type="button" onclick="payNow()">
-💳 Pay Now ₹199
-</button>
-
-</div>
 <!-- SUCCESS -->
 <div class="card success" id="successBox">
 
-<div class="success-icon">
-✅
-</div>
+  <div class="success-icon">
+    ✅
+  </div>
 
-<h2>Warranty Request Submitted</h2>
+  <h2>
+    Thank You!
+  </h2>
 
-<p>
-आपकी warranty request successfully submit हो गई है।
-</p>
+  <p>
+    <strong>Your Warranty Request Has Been Submitted Successfully.</strong>
+  </p>
 
-<p>
-हम आपके दिए गए mobile number पर contact करेंगे।
-</p>
+  <p>
+    आपकी warranty request successfully submit हो गई है।
+  </p>
+
+  <p>
+    हमारी टीम आपके registered mobile number पर जल्द ही contact करेगी।
+  </p>
 
 </div>
 
@@ -345,21 +325,6 @@ problem.addEventListener("change", function(){
 });
 
 
-function payNow(){
-
- const upiID = "7568735899@ptaxis";
-  const amount = "10";
-  const name = "Warranty Service Charge";
-
-  const upiURL =
-    "upi://pay?pa=" + encodeURIComponent(upiID) +
-    "&pn=" + encodeURIComponent(name) +
-    "&am=" + amount +
-    "&cu=INR";
-
-  window.location.href = upiURL;
-}
-
 document.getElementById("warrantyForm")
 .addEventListener("submit", function(e){
 
@@ -370,12 +335,22 @@ document.getElementById("warrantyForm")
     return;
   }
 
+  // Form hide
   this.style.display = "none";
 
-  document.getElementById("paymentPage")
-  .classList.remove("hidden");
+  // Thank You screen show
+  const successBox = document.getElementById("successBox");
+
+  successBox.style.display = "block";
+
+  // ऊपर scroll
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 });
+
 </script>
 
 </body>
