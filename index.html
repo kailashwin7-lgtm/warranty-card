@@ -346,7 +346,18 @@ problem.addEventListener("change", function(){
 
 
 function payNow(){
-  window.location.href = "https://p.ppsl.io/PYTMPS/vMxejk";
+
+ const upiID = "7568735899@ptaxis";
+  const amount = "10";
+  const name = "Warranty Service Charge";
+
+  const upiURL =
+    "upi://pay?pa=" + encodeURIComponent(upiID) +
+    "&pn=" + encodeURIComponent(name) +
+    "&am=" + amount +
+    "&cu=INR";
+
+  window.location.href = upiURL;
 }
 
 document.getElementById("warrantyForm")
